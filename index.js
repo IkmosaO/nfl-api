@@ -1,6 +1,8 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const teams = require('./teams')
 const app = express()
+const { saveNewTeam } = require('./controller/teams')
 
 app.set('view engine', 'pug')
 
@@ -15,6 +17,8 @@ app.get('/:id', (request, response) => {
   return response.send(findId)
 })
 
+app.post('/', bodyParser.json(), saveNewTeam)
 
 
-app.listen(1344)
+
+app.listen(1345)
